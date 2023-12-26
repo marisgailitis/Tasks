@@ -24,7 +24,7 @@ namespace Casting
             double d = 4.2;
             float e = 5.3f;
 
-            float sum = int.Parse(a) + b + c + (int)d + (int)e;
+            float sum = double.Parse(a) + b + c + (double)d + (double)e;
             Console.WriteLine(sum);
         }
     }
