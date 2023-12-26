@@ -1,33 +1,20 @@
 ﻿using System;
+using MoreVariablesAndPrinting;
 
-namespace MoreVariablesAndPrinting
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            string myName, myEyes, myTeeth, myHair;
-            int myAge, myHeight, myWeight;
+        string name = "Zed A. Shaw";
+        double age = 35;
+        double height = 74;
+        double weight = 180;
+        string eyeColor = "Blue";
+        string teethColor = "White";
+        string hairColor = "Brown";
+        PersonCharacteristics zedaShawCharacteristics = new PersonCharacteristics(name, age, height, weight, eyeColor, teethColor, hairColor);
+        zedaShawCharacteristics.DebugCharacteristics();
 
-            myName = "Zed A. Shaw";
-            myAge = 35;
-            myHeight = 74;  // inches
-            myWeight = 180; // lbs
-            myEyes = "Blue";
-            myTeeth = "White";
-            myHair = "Brown";
-
-            Console.WriteLine("Let's talk about " + myName + ".");
-            Console.WriteLine("He's " + myHeight + " inches tall.");
-            Console.WriteLine("He's " + myWeight + " pounds heavy.");
-            Console.WriteLine("Actually, that's not too heavy.");
-            Console.WriteLine("He's got " + myEyes + " eyes and " + myHair + " hair.");
-            Console.WriteLine("His teeth are usually " + myTeeth + " depending on the coffee.");
-
-            Console.WriteLine("If I add " + myAge + ", " + myHeight + ", and " + myWeight
-                               + " I get " + (myAge + myHeight + myWeight) + ".");
-
-            Console.ReadKey();
-        }
+        Console.Read();
     }
 }
