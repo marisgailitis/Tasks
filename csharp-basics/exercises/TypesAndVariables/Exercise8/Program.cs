@@ -1,24 +1,37 @@
 ﻿using System;
 
-namespace Exercise8
+class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("ievadi minutes");
-            var minutes = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter a number of minutes");
+        string userInput = Console.ReadLine();
+		double sum = ParseToDouble(userInput);
 
-            var minutesInYear = 365 * 24 * 60;
-            var miutesInDay = 24 * 60;
+		double minutesInYear = 525948.766;
+		double minutesInDay = 1440;
 
-            var years = minutes / minutesInYear;
-            var minutesToDays = minutes % minutesInYear;
-            var days = minutesToDays / miutesInDay;
-            
-            Console.WriteLine($"it's {years} years and {days} days");
+		int numberOfYears = (int)(sum / minutesInYear);
+		double remainderForDays = sum - numberOfYears * minutesInYear;
+		double numberOfDays = Double.Round(remainderForDays / minutesInDay, 2);
 
-            Console.ReadKey();
-        }
+        Console.WriteLine($"The number of years is : {numberOfYears}");
+		Console.WriteLine($"The number of days is : {numberOfDays}");
     }
+
+	private static double ParseToDouble(string input)
+	{
+		double minutes = 0;
+
+		try
+        {
+            minutes = double.Parse(input);
+        }
+		catch(Exception e)
+		{
+			Console.WriteLine($"An exception occurred: {e.Message}");
+		}
+
+		return minutes;
+	}
 }
