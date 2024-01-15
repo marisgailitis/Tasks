@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace TicTacToe
@@ -16,7 +14,7 @@ namespace TicTacToe
 
         private static void Main(string[] args)
         {
-            GetBoardStats();
+            SetBoardStats();
             InitBoard();
             DisplayBoard();
 
@@ -32,20 +30,25 @@ namespace TicTacToe
             GetWinnner();
         }
 
-        private static void GetBoardStats()
+        private static void SetBoardStats()
         {
+            //no point in having either 2x2 board or a line of 2 points required to win
             while(_boardSize < 3 || _lineSize < 3 || _lineSize > _boardSize)
             {
                 Console.WriteLine($"Choose board and line size");
                 
                 string input = Console.ReadLine();
                 string[] symbols = input.Split(' ');
+                bool sufficientInput = symbols.Length >= 2;
 
-                if(symbols.Length >= 2)
+                if(sufficientInput)
                 {
                     if (int.TryParse(symbols[0], out _boardSize) && int.TryParse(symbols[1], out _lineSize))
                     {
-                        if(_boardSize < 3 || _lineSize < 3 || _lineSize > _boardSize)
+                        bool boardTooSmall = _boardSize < 3 || _lineSize < 3;
+                        bool lineOutOfBounds = _lineSize > _boardSize;
+
+                        if(boardTooSmall || lineOutOfBounds)
                         {
                             Console.WriteLine("The parameters be of appropriate size");
                         }
@@ -73,31 +76,30 @@ namespace TicTacToe
         {
             currentPlayer = GetPlayerSymbol(_currentTurn);
 
-            Console.WriteLine($"' {currentPlayer} ', choose your location (row, column): ");
-
+            Console.WriteLine($"' {currentPlayer} ', choose your coordinates (row, column): ");
             string input = Console.ReadLine();
+            string[] numbers = input.Split(' ');
 
-            string[] symbols = input.Split(' ');
+            if (numbers.Length < 2) Console.WriteLine("The cell coordinates consist of two parameters");
 
-            if (symbols.Length < 2) Console.WriteLine("The location consists of two numbers");
-
-            if (int.TryParse(symbols[0], out int loc1) && int.TryParse(symbols[1], out int loc2))
+            if (int.TryParse(numbers[0], out int row) && int.TryParse(numbers[1], out int col))
             {
-                if(loc1 < 0 && loc2 < 0 && loc1 >= _boardSize && loc2 >= _boardSize)
+                if(row < 0 || col < 0 || row >= _boardSize || col >= _boardSize)
                 {
-                    Console.WriteLine("The location must fit in board margins");
+                    Console.WriteLine("The cell must fit in board margins");
                     return;
                 }
-                if(_board[loc1, loc2] == ' ')
+                //if the cell is free, fill it
+                if(_board[row, col] == ' ')
                 {
-                    _board[loc1, loc2] = currentPlayer;
+                    _board[row, col] = currentPlayer;
                     _currentTurn++;
                     return;
                 }
-                Console.WriteLine("You must give a new location");
+                Console.WriteLine("Input a cell that is not taken");
             }
 
-            Console.WriteLine("Enter two numbers.");
+            Console.WriteLine("Could not get the coordinates from the input");
         }
 
         private static char GetPlayerSymbol(int currentTurn)
@@ -117,42 +119,47 @@ namespace TicTacToe
 
         private static bool GetIndividualResult(char player)
         {
-            List<(int, int)> indexes = new List<(int, int)>();
+            // find the cells occupied by player
+            List<BoardCoordinates> filledCells = new List<BoardCoordinates>();
 
-            for(int row = 0; row < _boardSize; row++)
+            for(int x = 0; x < _boardSize; x++)
             {
-                for(int col = 0; col < _boardSize; col++)
+                for(int y = 0; y < _boardSize; y++)
                 {
-                    if(_board[row, col] == player)
-                        indexes.Add((row, col));
+                    if(_board[x, y] == player)
+                        filledCells.Add(new BoardCoordinates(x, y));
                 }
             }
 
-            if(indexes.Count < _lineSize) 
+            // too few moves done, no need to calculate further
+            if(filledCells.Count < _lineSize) 
                 return false;
 
-            int xDiff = indexes[1].Item1 - indexes[0].Item1;
-            int yDiff = indexes[1].Item2 - indexes[0].Item2;
+            // set the first difference in direction for later reference
+            int xDiff = filledCells[1].row - filledCells[0].row;
+            int yDiff = filledCells[1].column - filledCells[0].column;
 
-            int reps = 0;
-            int repsNeedToWin = _lineSize - 2;
-            
-            for(int i = 2; i < indexes.Count; i++)
+            int score = 0;
+            int scoreNeedToWin = _lineSize - 2;
+
+            //check if the reference matches constantly or it needs to be changed at some point
+            //which means the line currently is not straight
+            for(int i = 2; i < filledCells.Count; i++)
             {
-                int curxDiff = indexes[i].Item1 - indexes[i - 1].Item1;
-                int curyDiff = indexes[i].Item2 - indexes[i - 1].Item2;
+                int new_x_Diff = filledCells[i].row - filledCells[i - 1].row;
+                int new_y_Diff = filledCells[i].column - filledCells[i - 1].column;
 
-                if(xDiff != curxDiff || yDiff != curyDiff)
+                if(xDiff != new_x_Diff || yDiff != new_y_Diff)
                 {
-                    xDiff = curxDiff;
-                    yDiff = curyDiff;
-                    reps = 0;
+                    xDiff = new_x_Diff;
+                    yDiff = new_y_Diff;
+                    score = 0;
                 }
                 else
-                    reps++;
+                    score++;
             }
 
-            return reps == repsNeedToWin;
+            return score == scoreNeedToWin;
         }
 
         private static void GetWinnner()
@@ -175,7 +182,7 @@ namespace TicTacToe
             for(int row = 0; row < _boardSize; row++)
             {
                 builder = new StringBuilder();
-                builder.Append($"  {row}  ");
+                builder.Append($" {row} ");
 
                 for(int col = 0; col < _boardSize; col++)
                 {
@@ -189,6 +196,18 @@ namespace TicTacToe
                 Console.WriteLine(upperLine);
                 Console.WriteLine(underline);
             }
+        }
+
+        public struct BoardCoordinates
+        {
+            public BoardCoordinates (int x_, int y_)
+            {
+                x = x_;
+                y = y_;
+            }
+
+            public int x;
+            public int y;
         }
     }
 }

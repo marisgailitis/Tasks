@@ -8,13 +8,13 @@ namespace Exercise8
     internal class Program
     {
 		private static List<string> _words = new List<string>(){"someword", "someotherword", "somelongestword"};
-		private static int _numberOfTries;
+		private static int _numberOfTries = 15;
 		private static char[] _pickedWord;
 		private static char _guess;
-		private static char[] _progress;
+		private static char[] _wordInProgress;
 		private static StringBuilder _misses = new StringBuilder();
 		private static int _attemptsLeft;
-		private static int _lettersToGuess;
+		private static int _lettersLeft;
 		private static string _underline = "-=-=-=-=-=-=-=-=-=-=-=-=-=-";
 		private static bool gameOver;
 
@@ -23,15 +23,15 @@ namespace Exercise8
             while(!gameOver)
 			{
 				Initialize();
-				_attemptsLeft = 15;
+				_attemptsLeft = _numberOfTries;
 
 				Display();
 
-				while(_attemptsLeft > 0 && _lettersToGuess > 0)
+				while(_attemptsLeft > 0 && _lettersLeft > 0)
 				{
 					GetGuess();
 					Display();
-					Console.WriteLine($"Attemmpts : {_attemptsLeft} and to guess : {_lettersToGuess}");
+					Console.WriteLine($"Attemmpts : {_attemptsLeft} and to guess : {_lettersLeft}");
 				}
 
 				GetResult();
@@ -44,19 +44,19 @@ namespace Exercise8
 			Random random = new Random();
 			_pickedWord = _words[random.Next(0, _words.Count)].ToCharArray();
 			int length = _pickedWord.Length;
-			_progress = new char[length];
-			_lettersToGuess = length;
+			_wordInProgress = new char[length];
+			_lettersLeft = length;
 
 			for(int i = 0; i < length; i++)
 			{
-				_progress[i] = '_';
+				_wordInProgress[i] = '_';
 			}
 		}
 
 		private static void Display()
 		{
 			Console.WriteLine(_underline);
-			Console.WriteLine($"Word : {string.Join(" ", _progress)}");
+			Console.WriteLine($"Word : {string.Join(" ", _wordInProgress)}");
 			Console.WriteLine($"Misses : {_misses}");
 			Console.WriteLine($"Guess : {_guess}");
 		}
@@ -76,7 +76,7 @@ namespace Exercise8
 					_progress[i] = guess;
 					charFound = true;
 					_attemptsLeft--;
-					_lettersToGuess--;
+					_lettersLeft--;
 					return;
 				}
 			}
@@ -84,9 +84,8 @@ namespace Exercise8
 			if(!charFound)
 			{
 				_misses.Append(guess);
+				_attemptsLeft--;
 			}
-
-			_attemptsLeft--;
 		}
 
 		private static void GetResult()
@@ -96,6 +95,7 @@ namespace Exercise8
 			else
 				Console.WriteLine($"You Lost");
 		}
+		
 		private static void PlayOrQuit()
 		{
 			bool answerGiven = false;
