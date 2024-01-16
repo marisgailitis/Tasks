@@ -18,7 +18,6 @@ namespace Exercise6
 
 		private static void Initialize()
 		{
-			//we could keep adding multipliers indefinitely without having to copy code much
 			pairs.Add( new MultiplierStringPair("Fizz", new List<int>(){ 3 }) );
 			pairs.Add( new MultiplierStringPair("Buzz", new List<int>(){ 5 }) );
 			pairs.Add( new MultiplierStringPair("FizzBuzz", new List<int>(){ 3, 5 }) );
