@@ -14,7 +14,7 @@ namespace Exercise2
 
             for (i = 0; i < n; i++)
             {
-                Console.WriteLine(Pow(i, 2));
+                Console.WriteLine(Pow(i, n));
             }
         }
 
