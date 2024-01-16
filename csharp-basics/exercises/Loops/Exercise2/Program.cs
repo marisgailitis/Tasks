@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 
 namespace Exercise2
 {
@@ -9,15 +9,24 @@ namespace Exercise2
             int i, n;
             
             Console.WriteLine("Input number of terms : ");
+
             n = Convert.ToInt32(Console.ReadLine());
-            /*
-            todo - complete loop to multiply i with itself n times, it is NOT allowed to use Math.Pow()
-            */
+
             for (i = 0; i < n; i++)
             {
+                Console.WriteLine(Pow(i, n));
+            }
+        }
+
+        static int Pow(int number, int times)
+        {
+            int pow = number;
+            for (int i = 1; i < times; i++)
+            {
+                pow *= number;
             }
 
-            Console.ReadKey();
+            return pow;
         }
     }
 }
