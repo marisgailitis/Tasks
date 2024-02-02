@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Exercise9
 {
-    class Program
-    {
-        private static void Main(string[] args)
-        {
-            string[] names = {"samuel", "MABELLE", "letitia", "meridith"};
+	class Program
+	{
+		private static void Main(string[] args)
+		{
+			string[] names = { "samuel", "MABELLE", "letitia", "meridith" };
 
-			for(int i = 0; i < names.Length; i++)
+			for (int i = 0; i < names.Length; i++)
 			{
 				string name = names[i].ToLower();
 				List<char> chars = name.ToList();
@@ -19,10 +19,10 @@ namespace Exercise9
 				names[i] = new string(chars.ToArray());
 			}
 
-			foreach(string name in names)
+			foreach (string name in names)
 			{
 				Console.Write($"{name} ");
 			}
-        }
-    }
+		}
+	}
 }

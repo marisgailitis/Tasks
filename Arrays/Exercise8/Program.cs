@@ -5,8 +5,8 @@ using System.Linq;
 
 namespace Exercise8
 {
-    internal class Program
-    {
+	internal class Program
+	{
 		private static List<string> _words = new List<string>(){"someword", "someotherword", "somelongestword"};
 		private static int _numberOfTries = 15;
 		private static char[] _pickedWord;
@@ -18,9 +18,9 @@ namespace Exercise8
 		private static string _underline = "-=-=-=-=-=-=-=-=-=-=-=-=-=-";
 		private static bool gameOver;
 
-        static void Main(string[] args)
-        {
-			while(true)
+		static void Main(string[] args)
+		{
+			while (true)
 			{
 				Initialize();
 				_attemptsLeft = _numberOfTries;
@@ -37,11 +37,11 @@ namespace Exercise8
 				GetResult();
 				
 				if (!PlayAgain())
-                {
-                    break;
-                }
+				{
+					break;
+				}
 			}
-        }
+		}
 
 		private static void Initialize()
 		{
@@ -117,10 +117,10 @@ namespace Exercise8
 					Environment.Exit(0);
 				}
 				else
-                {
-                    Console.WriteLine("Invalid decision. Type 'again' or 'quit'.");
-                }
+				{
+					Console.WriteLine("Invalid decision. Type 'again' or 'quit'.");
+				}
 			}
 		}
-    }
+	}
 }
