@@ -7,6 +7,7 @@ namespace Exercise11
 		public static void Main(string[] args)
 		{
 			string word = Search("I am finding Nemo");
+
 			Console.WriteLine(word);
 		}
 
@@ -21,7 +22,6 @@ namespace Exercise11
 					return $"I found Nemo at { i }!";
 				}
 			}
-
 			return "I can't find Nemo :(";
 		}
 	}

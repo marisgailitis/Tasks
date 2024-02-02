@@ -21,7 +21,9 @@ namespace TicTacToe
 			while (!gameOver && _currentTurn < 9)
 			{
 				GetPlayerMove();
+				
 				gameOver = CheckResult();
+
 				DisplayBoard();
 			}
 
@@ -50,13 +52,16 @@ namespace TicTacToe
 				for (int y = 0; y < 3; y++)
 				{
 					builder.Append(_board[x, y]);
+
 					builder.Append(" | ");
 				}
 
 				string upperLine = builder.ToString();
+
 				string underline = "-------------";
 
 				Console.WriteLine(upperLine);
+
 				Console.WriteLine(underline);
 			}
 		}
@@ -66,7 +71,9 @@ namespace TicTacToe
 			currentPlayer = GetPlayerSymbol(_currentTurn);
 
 			Console.WriteLine($"' {currentPlayer} ', choose your coordinates (row, column): ");
+
 			string input = Console.ReadLine();
+
 			string[] numbers = input.Split(' ');
 
 			if (numbers.Length < 2) Console.WriteLine("The cell coordinates consist of two parameters");
@@ -76,20 +83,22 @@ namespace TicTacToe
 				if (row < 0 || col < 0 || row > 2 || col > 2)
 				{
 					Console.WriteLine("The cell must fit in board margins");
+
 					return;
 				}
-
 				//if the cell is free, fill it
 				if (_board[row, col] == ' ')
 				{
 					_board[row, col] = currentPlayer;
+
 					_currentTurn++;
+
 					return;
 				}
 				Console.WriteLine("Input a cell that is not taken");
+
 				return;
 			}
-
 			Console.WriteLine("Could not get the coordinates from the input");
 		}
 
@@ -101,9 +110,11 @@ namespace TicTacToe
 		private static bool CheckResult()
 		{
 			Console.WriteLine($"Current move {_currentTurn}");
+
 			if (_currentTurn < 5) return false;
 
 			bool firstPlayer = GetIndividualResult('X');
+
 			bool secondPlayer = GetIndividualResult('O');
 
 			return firstPlayer || secondPlayer;
@@ -133,21 +144,21 @@ namespace TicTacToe
 			return false;
 		}
 
-		private static bool CheckIndividualLine(Point index, Point incrementation, char player)
+		private static bool CheckIndividualLine(Point indexOnField, Point incrementation, char player)
 		{
 			int filledCells = 0;
 
 			for (int i = 0; i < 3; i++)
 			{
-				if (_board[index.X, index.Y] == player)
+				if (_board[indexOnField.X, indexOnField.Y] == player)
 				{
 					filledCells++;
 				}
 
-				index.X += incrementation.X;
-				index.Y += incrementation.Y;
-			}
+				indexOnField.X += incrementation.X;
 
+				indexOnField.Y += incrementation.Y;
+			}
 			return filledCells == 3;
 		}
 
