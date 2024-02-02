@@ -1,4 +1,4 @@
-﻿namespace FuelConsumptionCalculator
+﻿﻿namespace Exercise12
 {
     class Program
     {
