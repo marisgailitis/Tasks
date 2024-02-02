@@ -5,8 +5,8 @@ using System.Linq;
 
 namespace Exercise8
 {
-    internal class Program
-    {
+	internal class Program
+	{
 		private static List<string> _words = new List<string>(){"someword", "someotherword", "somelongestword"};
 		private static int _numberOfTries = 15;
 		private static char[] _pickedWord;
@@ -18,9 +18,9 @@ namespace Exercise8
 		private static string _underline = "-=-=-=-=-=-=-=-=-=-=-=-=-=-";
 		private static bool gameOver;
 
-        static void Main(string[] args)
-        {
-            while(!gameOver)
+		static void Main(string[] args)
+		{
+			while (true)
 			{
 				Initialize();
 				_attemptsLeft = _numberOfTries;
@@ -35,9 +35,13 @@ namespace Exercise8
 				}
 
 				GetResult();
-				PlayOrQuit();
+				
+				if (!PlayAgain())
+				{
+					break;
+				}
 			}
-        }
+		}
 
 		private static void Initialize()
 		{
@@ -75,7 +79,6 @@ namespace Exercise8
 					_pickedWord[i] = '_';
 					_progress[i] = guess;
 					charFound = true;
-					_attemptsLeft--;
 					_lettersLeft--;
 					return;
 				}
@@ -90,36 +93,34 @@ namespace Exercise8
 
 		private static void GetResult()
 		{
-			if(_lettersToGuess == 0)
+			if(_lettersLeft == 0)
 				Console.WriteLine($"You won!");
 			else
 				Console.WriteLine($"You Lost");
 		}
 		
-		private static void PlayOrQuit()
+		private static bool PlayOrQuit()
 		{
-			bool answerGiven = false;
-			while(!answerGiven)
+			Console.WriteLine($"Play 'again' or 'quit'?");
+
+			while(true)
 			{
-				Console.WriteLine($"Play 'again' or 'quit'?");
 				string decision = Console.ReadLine();
 				Console.WriteLine(decision);
 
 				if(decision == "again")
 				{
 					_misses.Clear();
-					answerGiven = true;
 				}
 				else if(decision == "quit")
 				{
-					gameOver = true;
-					answerGiven = true;
+					Environment.Exit(0);
 				}
 				else
 				{
-					Console.WriteLine($"Please give a correct answer");
+					Console.WriteLine("Invalid decision. Type 'again' or 'quit'.");
 				}
 			}
 		}
-    }
+	}
 }
