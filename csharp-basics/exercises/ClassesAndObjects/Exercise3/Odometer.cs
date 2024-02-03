@@ -16,14 +16,14 @@ namespace Excercise3
 		{
 			while(car.State == Car.DrivingState.Driving)
 			{
-				car.IncreaseMileage(TimeExtensions.DeltaTime * speedMultiplier);
-				await Task.Delay(TimeExtensions.DeltaMilliSeconds);
+				car.IncreaseMileage(TimeMethods.DeltaTime * speedMultiplier);
+				await Task.Delay(TimeMethods.DeltaMilliSeconds);
 			}
 		}
 
 		public void ReportMileage()
 		{
-			Console.WriteLine($"The current mileage on the odometer is {car.Mileage}");
+			Console.WriteLine($"The current mileage on the odometer is { Math.Round(car.Mileage, 2) }");
 		}
     }
 }

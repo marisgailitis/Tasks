@@ -4,20 +4,20 @@ namespace FuelConsumptionCalculator
     {
 		public double CalculateConsumption(Car car)
         {
-            return (car.endKilometers - car.startKilometers) / car.litersUsed;
+            return car.LitersUsed / (car.EndKilometers - car.StartKilometers);
         }
 
-        private double ConsumptionPer100Km(Car car)
+        public double ConsumptionPer100Km(Car car)
         {
-            return CalculateConsumption(Car car) * 100;
+            return CalculateConsumption(car) * 100;
         }
 
-        public bool GasHog(Car car)
+        public bool IsGasHog(Car car)
         {
            return ConsumptionPer100Km(car) > 15;
         }
 
-        public bool EconomyCar(Car car)
+        public bool IsEconomyCar(Car car)
         {
             return ConsumptionPer100Km(car) < 5;
         }

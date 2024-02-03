@@ -12,20 +12,20 @@ namespace EnergyDrinks
         {
             Console.WriteLine("Total number of people surveyed " + NumberedSurveyed);
 
-			double energyDrinkBuyers = CalculateEnergyDrinkers(NumberedSurveyed);
+			int energyDrinkBuyers = CalculateEnergyDrinkers(NumberedSurveyed);
 
             Console.WriteLine($"Approximately { energyDrinkBuyers } bought at least one energy drink");
-            Console.WriteLine($"{ CalculatePreferCitrus((int)(energyDrinkBuyers * PreferCitrusDrinks)) } of those prefer citrus flavored energy drinks.");
+            Console.WriteLine($"{ CalculatePreferCitrus(energyDrinkBuyers) } of those prefer citrus flavored energy drinks.");
         }
 
-        private static double CalculateEnergyDrinkers(int numberSurveyed)
+        private static int CalculateEnergyDrinkers(int numberSurveyed)
         {
-            return Math.Floor((double)numberSurveyed * PurchasedEnergyDrinks);
+            return (int)(numberSurveyed * PurchasedEnergyDrinks);
         }
 
-        private static double CalculatePreferCitrus(int numberSurveyed)
+        private static int CalculatePreferCitrus(int numberSurveyed)
         {
-            return Math.Floor((double)numberSurveyed * PreferCitrusDrinks);
+            return (int)(numberSurveyed * PreferCitrusDrinks);
         }
     }
 }

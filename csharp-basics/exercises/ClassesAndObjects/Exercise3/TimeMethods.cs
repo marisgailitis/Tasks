@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 namespace Excercise3
 {
-	public static class TimeMethods
+	public static class TimeExtensions
 	{
 		private static long previousTime;
 		public static int DeltaMilliSeconds;

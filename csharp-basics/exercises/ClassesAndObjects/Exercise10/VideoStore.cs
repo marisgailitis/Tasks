@@ -40,7 +40,6 @@ namespace Exercise10
 				if(video.Title == name && video.CheckedOut)
 				{
 					video.GetReturned();
-
 					return true;
 				}
 			}
@@ -52,7 +51,6 @@ namespace Exercise10
 		public void ListInventory()
 		{
 			StringBuilder builder = new StringBuilder();
-			
 			builder.Append($"We have more, the amount of movies we have is { videos.Count }: ");
 
 			Dictionary<string, int> videoCount = new Dictionary<string, int>();
@@ -60,7 +58,6 @@ namespace Exercise10
 			foreach(Video video in videos)
 			{
 				string title = video.Title;
-
 				if(!videoCount.ContainsKey(title))
 				{
 					videoCount.Add(title, 1);

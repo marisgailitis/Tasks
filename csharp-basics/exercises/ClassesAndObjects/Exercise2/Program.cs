@@ -8,13 +8,8 @@ namespace FuelConsumptionCalculator
 {
     class Program
     {
-        private static void Main(string[] args)
+		private static void Main(string[] args)
         {
-            int startKilometers;
-            int liters;
-            
-            Console.WriteLine();
-
             Car car = new Car(0);
             Car car1 = new Car(0);
             
@@ -24,19 +19,17 @@ namespace FuelConsumptionCalculator
                 FillCar(ref car1);
             }
 
-			Calculations calculations = new Calculations();
-
-            Console.WriteLine($"Car Kilometers per liter are {car.CalculateConsumption()} gasHog: {calculations.GasHog(car)}");
-            Console.WriteLine($"Car1 Kilometers per liter are {car1.CalculateConsumption()} economyCar: {calculations.EconomyCar(car1)}");
+            Console.WriteLine($"Car Kilometers per liter are {car.CalculateConsumption()} gasHog: {car.IsGasHog()}");
+            Console.WriteLine($"Car1 Kilometers per liter are {car1.CalculateConsumption()} economyCar: {car1.IsEconomyCar()}");
         }
 
 		private static void FillCar(ref Car car)
 		{
 			Console.Write("Enter first reading: ");
-			startKilometers = Convert.ToInt32(Console.ReadLine());  
+			int startKilometers = Convert.ToInt32(Console.ReadLine());  
 
 			Console.Write("Enter liters reading: ");
-			liters = Convert.ToInt32(Console.ReadLine());
+			double liters = Convert.ToInt32(Console.ReadLine());
 			
 			car.FillUp(startKilometers, liters);
 		}

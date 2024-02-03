@@ -10,11 +10,9 @@ namespace Exercise10
 		public void AddNewRating()
 		{
 			Console.WriteLine("Enter the movie name");
-			
 			string name = Console.ReadLine();
 
 			Console.WriteLine($"Give the movie {name} a rating");
-
 			string input = Console.ReadLine();
 
 			if(double.TryParse(input, out double rating))

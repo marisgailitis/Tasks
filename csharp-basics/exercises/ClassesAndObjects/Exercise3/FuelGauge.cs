@@ -18,7 +18,7 @@ namespace Excercise3
 			{
 				car.IncreaseFuel(speedMultiplier);
 				ReportFuel();
-				await Task.Delay(TimeExtensions.DeltaMilliSeconds);
+				await Task.Delay(TimeMethods.DeltaMilliSeconds);
 			}
 		}
 
@@ -28,13 +28,13 @@ namespace Excercise3
 			{
 				car.SpendFuel(speedMultiplier);
 				ReportFuel();
-				await Task.Delay(TimeExtensions.DeltaMilliSeconds);
+				await Task.Delay(TimeMethods.DeltaMilliSeconds);
 			}
 		}
 
 		public void ReportFuel()
 		{
-			Console.WriteLine($"The current amount of fuel left is {car.FuelAmount}");
+			Console.WriteLine($"The current amount of fuel left is { Math.Round(car.FuelAmount, 2) }");
 		}
     }
 }

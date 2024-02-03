@@ -3,8 +3,8 @@ using System.Net.Mail;
 
 namespace Excercise7
 {
-    public static class SavingsExtensions
-    {
+    public static class SavingsAdditionalMethods
+	{
 		public static decimal Deposit(this SavingsAccount account)
 		{
 			decimal amount = account.GetAmount();

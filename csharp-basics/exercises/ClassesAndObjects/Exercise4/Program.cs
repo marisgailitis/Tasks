@@ -17,7 +17,7 @@ namespace Excercise4
 
 			foreach(Movie pg in pgs)
 			{
-				Console.WriteLine(pg.Rating);
+				Console.WriteLine($"{pg.Title} is PG");
 			}
 		}
 

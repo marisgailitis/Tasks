@@ -31,8 +31,6 @@ namespace Exercise10
 		private void CalculateCurrentScore(double rating)
 		{
 			double roundedRating = Math.Round(Math.Clamp(rating, 0, 10), 2);
-			
-
 			scores.Add(roundedRating);
 
 			TotalRated++;
@@ -42,9 +40,7 @@ namespace Exercise10
 				TotalLiked++;
 			}
 			CurrentScore = 0;
-
 			int ratingCount = scores.Count;
-
 			foreach(double score in scores)
 			{
 				CurrentScore += score;

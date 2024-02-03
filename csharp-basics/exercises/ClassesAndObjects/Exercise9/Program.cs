@@ -7,7 +7,7 @@ namespace Excercise9
     {
         static void Main()
 		{
-			BankAccount account = new BankAccount("BenBen", 17.5m);
+			BankAccount account = new BankAccount("BenBen", -17.5m);
 			Console.WriteLine(account.ShowUserNameAndBalance());
 		}
 	}

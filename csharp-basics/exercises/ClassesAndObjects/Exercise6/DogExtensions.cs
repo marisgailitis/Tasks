@@ -9,7 +9,7 @@ namespace Excercise6
 		{
 			if(mother.Sex == father.Sex)
 			{
-				throw new ArgumentException("you can't be born to two same sex parents even though it is century 21");
+				throw new ArgumentException("Wrong");
 			}
 
 			dog.Mother = mother;

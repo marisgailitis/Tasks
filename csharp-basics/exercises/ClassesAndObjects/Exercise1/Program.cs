@@ -6,9 +6,9 @@ namespace Excercise1
     {
         static void Main(string[] args)
         {
+			Product epson = new Product("Epson EB-U05", 440.46m, 1);
 			Product mouse = new Product("Logitech Mouse", 70m, 14);
 			Product iPhone = new Product("iPhone 5s", 999.99m, 3);
-			Product epson = new Product("Epson EB-U05", 440.46m, 1);
 
 			Console.WriteLine("Change the price of Epson EB-U05");
 			epson.ChangePrice(Convert.ToInt32(Console.ReadLine()));
@@ -31,9 +31,9 @@ namespace Excercise1
 			Console.WriteLine("Press any key to view products");
 			Console.Read();
 
+			epson.PrintProduct();
 			mouse.PrintProduct();
 			iPhone.PrintProduct();
-			epson.PrintProduct();
 
 			Console.Read();
         }
