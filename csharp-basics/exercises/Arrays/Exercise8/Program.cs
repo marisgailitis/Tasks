@@ -23,17 +23,13 @@ namespace Exercise8
 			while (true)
 			{
 				Initialize();
-
 				_attemptsLeft = _numberOfTries;
-
 				Display();
 
 				while(_attemptsLeft > 0 && _lettersLeft > 0)
 				{
 					GetGuess();
-
 					Display();
-					
 					Console.WriteLine($"Attemmpts : {_attemptsLeft} and to guess : {_lettersLeft}");
 				}
 
@@ -49,13 +45,11 @@ namespace Exercise8
 		private static void Initialize()
 		{
 			Random random = new Random();
-
 			_pickedWord = _words[random.Next(0, _words.Count)].ToCharArray();
 			
 			int length = _pickedWord.Length;
 
 			_wordInProgress = new char[length];
-
 			_lettersLeft = length;
 
 			for(int i = 0; i < length; i++)
@@ -75,9 +69,7 @@ namespace Exercise8
 		private static void GetGuess()
 		{
 			string input = Console.ReadLine();
-
 			char guess = input[0];
-
 			bool charFound = false;
 
 			for(int i = 0; i < _pickedWord.Length; i++)
@@ -85,11 +77,8 @@ namespace Exercise8
 				if(_pickedWord[i] == guess)
 				{
 					_pickedWord[i] = '_';
-
 					_progress[i] = guess;
-
 					charFound = true;
-
 					_lettersLeft--;
 
 					return;
@@ -99,7 +88,6 @@ namespace Exercise8
 			if(!charFound)
 			{
 				_misses.Append(guess);
-
 				_attemptsLeft--;
 			}
 		}

@@ -12,7 +12,6 @@ namespace Exercise6
 			int length = 10;
 			
 			int[] values = new int[length];
-
 			int[] copiedValues = new int[length];
 
 			for (int i = 0; i < length; i++)
@@ -21,15 +20,12 @@ namespace Exercise6
 			}
 
 			values.CopyTo(copiedValues, 0);
-
 			values[length - 1] = -7;
 
 			string firstValues = string.Join(" ", values);
-
 			string secondValues = string.Join(" ", copiedValues);
 
 			Console.WriteLine($"Array 1: {firstValues}");
-
 			Console.WriteLine($"Array 2: {secondValues}");
 		}
 	}

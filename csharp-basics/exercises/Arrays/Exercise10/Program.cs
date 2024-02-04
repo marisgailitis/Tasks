@@ -8,7 +8,6 @@ namespace Exercise10
 		private static void Main(string[] args)
 		{
 			int[] numbers = { 92, 6, 73, -77, 81, -90, 99, 8, -85, 34 };
-
 			int[] results = GetResult(numbers);
 
 			foreach (int result in results)
@@ -22,8 +21,8 @@ namespace Exercise10
 			{
 				return new int[0];
 			}
-			int positiveNumberCount = 0;
 
+			int positiveNumberCount = 0;
 			int sumOfNegatives = 0;
 
 			for (int i = 0; i < numbers.Length; i++)
@@ -41,7 +40,7 @@ namespace Exercise10
 			}
 
 			int[] results = { positiveNumberCount, sumOfNegatives };
-			
+						
 			return results;
 		}
 	}

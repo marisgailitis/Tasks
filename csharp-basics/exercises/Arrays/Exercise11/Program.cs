@@ -7,7 +7,6 @@ namespace Exercise11
 		public static void Main(string[] args)
 		{
 			string word = Search("I am finding Nemo");
-
 			Console.WriteLine(word);
 		}
 

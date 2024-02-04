@@ -45,22 +45,18 @@ namespace TicTacToe
 			for (int x = 0; x < 3; x++)
 			{
 				StringBuilder builder = new StringBuilder();
-
 				builder.Append("| ");
 
 				for (int y = 0; y < 3; y++)
 				{
 					builder.Append(_board[x, y]);
-
 					builder.Append(" | ");
 				}
 
 				string upperLine = builder.ToString();
-
 				string underline = "-------------";
 
 				Console.WriteLine(upperLine);
-
 				Console.WriteLine(underline);
 			}
 		}
@@ -70,11 +66,9 @@ namespace TicTacToe
 			currentPlayer = GetPlayerSymbol(_currentTurn);
 
 			Console.WriteLine($"' {currentPlayer} ', choose your coordinates (row, column): ");
-
 			string input = Console.ReadLine();
 
 			string[] numbers = input.Split(' ');
-
 			if (numbers.Length < 2) Console.WriteLine("The cell coordinates consist of two parameters");
 
 			if (int.TryParse(numbers[0], out int row) && int.TryParse(numbers[1], out int col))
@@ -82,20 +76,16 @@ namespace TicTacToe
 				if (row < 0 || col < 0 || row > 2 || col > 2)
 				{
 					Console.WriteLine("The cell must fit in board margins");
-
 					return;
 				}
 				//if the cell is free, fill it
 				if (_board[row, col] == ' ')
 				{
 					_board[row, col] = currentPlayer;
-
 					_currentTurn++;
-
 					return;
 				}
 				Console.WriteLine("Input a cell that is not taken");
-
 				return;
 			}
 			Console.WriteLine("Could not get the coordinates from the input");
@@ -113,7 +103,6 @@ namespace TicTacToe
 			if (_currentTurn < 5) return false;
 
 			bool firstPlayer = GetIndividualResult('X');
-
 			bool secondPlayer = GetIndividualResult('O');
 
 			return firstPlayer || secondPlayer;
@@ -155,7 +144,6 @@ namespace TicTacToe
 				}
 
 				indexOnField.X += incrementation.X;
-
 				indexOnField.Y += incrementation.Y;
 			}
 			return filledCells == 3;
