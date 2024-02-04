@@ -16,13 +16,12 @@ namespace TicTacToe
 			InitBoard();
 			DisplayBoard();
 
-			bool gameOver = false;
-
-			while (!gameOver && _currentTurn < 9)
+			while (true)
 			{
 				GetPlayerMove();
 				
-				gameOver = CheckResult();
+				if(CheckResult() || _currentTurn == 9)
+					break;
 
 				DisplayBoard();
 			}
