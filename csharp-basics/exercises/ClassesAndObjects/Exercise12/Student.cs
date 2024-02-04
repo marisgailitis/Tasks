@@ -34,7 +34,7 @@ namespace Exercise12
 
 			for(int i = 0; i < answers.Length; i++)
 			{
-				if(answers[i] == paper.MarkScheme[i])
+				if(answers[i].Equals(paper.MarkScheme[i]))
 					receivedMark += markPerCorrectAnswer;
 			}
 			GetGrade(paper, receivedMark);
