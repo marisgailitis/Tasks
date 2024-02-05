@@ -1,15 +1,15 @@
 ﻿﻿using System;
-﻿using System.IO;
+using System.IO;
 
 namespace Exercise6
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
+	class Program
+	{
+		static void Main(string[] args)
+		{
 			using (StreamReader sr = new StreamReader("lear.txt"))
-            {
-                int lineCount = 0;
+			{
+				int lineCount = 0;
 				int wordCount = 0;
 				int charCount = 0;
 
@@ -17,13 +17,13 @@ namespace Exercise6
 
 				List<string> lines = new List<string>();
 
-                while ((line = sr.ReadLine()) != null)
-                {
-                    lines.Add(line);
+				while ((line = sr.ReadLine()) != null)
+				{
+					lines.Add(line);
 					lineCount++;
-                }
+				}
 
-				foreach(string l in lines)
+				foreach (string l in lines)
 				{
 					charCount += l.Length;
 
@@ -31,10 +31,10 @@ namespace Exercise6
 					wordCount += split.Length;
 				}
 
-				Console.WriteLine($"Lines: { lineCount }");
-				Console.WriteLine($"Words: { wordCount }");
-				Console.WriteLine($"Chars: { charCount }");
-            }
-        }
-    }
+				Console.WriteLine($"Lines: {lineCount}");
+				Console.WriteLine($"Words: {wordCount}");
+				Console.WriteLine($"Chars: {charCount}");
+			}
+		}
+	}
 }

@@ -1,8 +1,8 @@
 namespace PhoneBook
 {
-    public class PhoneEntry
-    {
-        public string name;
-        public string number;
-    }
+	public class PhoneEntry
+	{
+		public string name;
+		public string number;
+	}
 }
