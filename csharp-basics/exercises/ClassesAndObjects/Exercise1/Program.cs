@@ -2,10 +2,10 @@
 
 namespace Excercise1
 {
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
 			Product epson = new Product("Epson EB-U05", 440.46m, 1);
 			Product mouse = new Product("Logitech Mouse", 70m, 14);
 			Product iPhone = new Product("iPhone 5s", 999.99m, 3);
@@ -36,6 +36,6 @@ namespace Excercise1
 			iPhone.PrintProduct();
 
 			Console.Read();
-        }
-    }
+		}
+	}
 }

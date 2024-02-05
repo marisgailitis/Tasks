@@ -3,8 +3,8 @@ using System.Text;
 
 namespace Exercise10
 {
-    public class RatingManager
-    {
+	public class RatingManager
+	{
 		private static Dictionary<string, Rating> ratings = new Dictionary<string, Rating>();
 
 		public void AddNewRating()
@@ -15,9 +15,9 @@ namespace Exercise10
 			Console.WriteLine($"Give the movie {name} a rating");
 			string input = Console.ReadLine();
 
-			if(double.TryParse(input, out double rating))
+			if (double.TryParse(input, out double rating))
 			{
-				if(!ratings.ContainsKey(name))
+				if (!ratings.ContainsKey(name))
 				{
 					ratings.Add(name, new Rating(name));
 					ratings[name].ReceiveRating(rating);
@@ -34,10 +34,10 @@ namespace Exercise10
 
 		public void ViewRatings()
 		{
-			foreach(KeyValuePair<string, Rating> rating in ratings)
+			foreach (KeyValuePair<string, Rating> rating in ratings)
 			{
 				rating.Value.DisplayPublicScore();
 			}
 		}
-    }
+	}
 }

@@ -3,9 +3,9 @@ using System.Runtime.CompilerServices;
 
 namespace Exercise10
 {
-    public class Video
-    {
-        public string Title { get; private set; }
+	public class Video
+	{
+		public string Title { get; private set; }
 		public bool CheckedOut { get; private set; }
 		public Video(string Title_)
 		{
@@ -26,5 +26,5 @@ namespace Exercise10
 		{
 			CheckedOut = state;
 		}
-    }
+	}
 }

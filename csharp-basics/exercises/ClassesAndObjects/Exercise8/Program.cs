@@ -4,10 +4,10 @@ using System.Net.Mail;
 
 namespace Excercise8
 {
-    public class Program
-    {
-        static void Main(string[] args)
-        {
+	public class Program
+	{
+		static void Main(string[] args)
+		{
 			Point p1 = new Point(5, 2);
 			Point p2 = new Point(-3, 6);
 
@@ -23,5 +23,5 @@ namespace Excercise8
 			p1 = p2;
 			p2 = firstPoint;
 		}
-    }
+	}
 }

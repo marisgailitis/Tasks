@@ -3,9 +3,9 @@ using System.Runtime.CompilerServices;
 
 namespace Exercise11
 {
-    public class Account
-    {
-        public string Title { get; private set; }
+	public class Account
+	{
+		public string Title { get; private set; }
 		public decimal Balance { get; private set; }
 
 		public Account(string title, decimal balance)
@@ -23,5 +23,5 @@ namespace Exercise11
 			Balance += amount;
 			return amount;
 		}
-    }
+	}
 }

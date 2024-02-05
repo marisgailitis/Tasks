@@ -3,7 +3,7 @@ using System.Net.Mail;
 
 namespace Excercise7
 {
-    public static class SavingsAdditionalMethods
+	public static class SavingsAdditionalMethods
 	{
 		public static decimal Deposit(this SavingsAccount account)
 		{
@@ -23,5 +23,5 @@ namespace Excercise7
 			account.ChangeBalance(amount);
 			return amount;
 		}
-    }
+	}
 }

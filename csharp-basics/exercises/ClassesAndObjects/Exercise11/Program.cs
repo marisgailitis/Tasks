@@ -3,9 +3,9 @@ using System.Globalization;
 
 namespace Exercise11
 {
-    class Program
-    {
-        public static void Main()
+	class Program
+	{
+		public static void Main()
 		{
 			Account bartosAccount = new Account("Barto's account", 100);
 			Account bartosSwissAccount = new Account("Barto's account in Switzerland", 1000000);
@@ -28,8 +28,8 @@ namespace Exercise11
 
 			AccountUtilities.Transfer(mattsAccount, myAccount, 100);
 
-			Console.WriteLine($"Matt's account balance { AccountUtilities.DisplayCurrency(mattsAccount.Balance) }");
-			Console.WriteLine($"Matt's account balance { AccountUtilities.DisplayCurrency(myAccount.Balance) }");
+			Console.WriteLine($"Matt's account balance {AccountUtilities.DisplayCurrency(mattsAccount.Balance)}");
+			Console.WriteLine($"Matt's account balance {AccountUtilities.DisplayCurrency(myAccount.Balance)}");
 
 			Account a = new Account("A", 100);
 			Account b = new Account("B", 0);
@@ -38,11 +38,11 @@ namespace Exercise11
 			AccountUtilities.Transfer(a, b, 50);
 			AccountUtilities.Transfer(b, c, 25);
 
-			Console.WriteLine($"A account balance { AccountUtilities.DisplayCurrency(a.Balance) }");
-			Console.WriteLine($"B account balance { AccountUtilities.DisplayCurrency(b.Balance) }");
-			Console.WriteLine($"C account balance { AccountUtilities.DisplayCurrency(c.Balance) }");
+			Console.WriteLine($"A account balance {AccountUtilities.DisplayCurrency(a.Balance)}");
+			Console.WriteLine($"B account balance {AccountUtilities.DisplayCurrency(b.Balance)}");
+			Console.WriteLine($"C account balance {AccountUtilities.DisplayCurrency(c.Balance)}");
 		}
 
-		
-    }
+
+	}
 }

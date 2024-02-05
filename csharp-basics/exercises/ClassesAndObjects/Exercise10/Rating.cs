@@ -3,8 +3,8 @@ using System.Text;
 
 namespace Exercise10
 {
-    public class Rating
-    {
+	public class Rating
+	{
 		public string Title { get; private set; }
 		public int TotalRated { get; private set; }
 		public int TotalLiked { get; private set; }
@@ -34,14 +34,14 @@ namespace Exercise10
 			scores.Add(roundedRating);
 
 			TotalRated++;
-			
-			if(rating >= 7)
+
+			if (rating >= 7)
 			{
 				TotalLiked++;
 			}
 			CurrentScore = 0;
 			int ratingCount = scores.Count;
-			foreach(double score in scores)
+			foreach (double score in scores)
 			{
 				CurrentScore += score;
 			}
@@ -52,5 +52,5 @@ namespace Exercise10
 		{
 			return Math.Round((double)TotalLiked / (double)TotalRated * 100);
 		}
-    }
+	}
 }

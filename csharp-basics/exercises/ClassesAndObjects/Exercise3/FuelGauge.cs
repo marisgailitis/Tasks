@@ -2,8 +2,8 @@ using System;
 
 namespace Excercise3
 {
-    public class FuelGauge
-    {
+	public class FuelGauge
+	{
 		private Car car;
 		private double speedMultiplier = 5;
 
@@ -11,7 +11,7 @@ namespace Excercise3
 		{
 			car = car_;
 		}
-		
+
 		public async Task IncreaseFuel()
 		{
 			while (car.FuelAmount < 70)
@@ -34,7 +34,7 @@ namespace Excercise3
 
 		public void ReportFuel()
 		{
-			Console.WriteLine($"The current amount of fuel left is { Math.Round(car.FuelAmount, 2) }");
+			Console.WriteLine($"The current amount of fuel left is {Math.Round(car.FuelAmount, 2)}");
 		}
-    }
+	}
 }

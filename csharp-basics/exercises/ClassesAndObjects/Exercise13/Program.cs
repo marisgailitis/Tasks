@@ -2,27 +2,27 @@
 
 namespace Exercise13
 {
-    class Program
-    {
+	class Program
+	{
 		private static CultureInfo ukCulture = new CultureInfo("en-GB");
 		private static Dictionary<string, Ingredient> ingredients = new Dictionary<string, Ingredient>();
 
-        private static void Main(string[] args)
-        {
+		private static void Main(string[] args)
+		{
 			InitializeIngredients();
 
 			Smoothie s1 = new Smoothie();
 			s1.Ingredients = new Ingredient[] { ingredients["Banana"] };
-			Console.WriteLine($"Cost: { AdjustCultureCost(s1.GetCost()) }");
-			Console.WriteLine($"Price: { AdjustCultureCost(s1.GetPrice()) }");
+			Console.WriteLine($"Cost: {AdjustCultureCost(s1.GetCost())}");
+			Console.WriteLine($"Price: {AdjustCultureCost(s1.GetPrice())}");
 			Console.WriteLine(s1.GetName());
 
 			Smoothie s2 = new Smoothie();
 			s2.Ingredients = new Ingredient[] { ingredients["Raspberries"], ingredients["Strawberries"], ingredients["Blueberries"] };
-			Console.WriteLine($"Cost: { AdjustCultureCost(s2.GetCost()) }");
-			Console.WriteLine($"Price: { AdjustCultureCost(s2.GetPrice()) }");
+			Console.WriteLine($"Cost: {AdjustCultureCost(s2.GetCost())}");
+			Console.WriteLine($"Price: {AdjustCultureCost(s2.GetPrice())}");
 			Console.WriteLine(s2.GetName());
-        }
+		}
 
 		private static string AdjustCultureCost(double sum)
 		{
@@ -48,9 +48,9 @@ namespace Exercise13
 
 			Ingredient apple = new Ingredient("Apple", 1.75);
 			ingredients.Add(apple.Name, apple);
-			
+
 			Ingredient pineapple = new Ingredient("Pineapple", 3.50);
 			ingredients.Add(pineapple.Name, pineapple);
 		}
-    }
+	}
 }

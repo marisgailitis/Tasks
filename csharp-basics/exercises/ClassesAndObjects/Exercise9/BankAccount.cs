@@ -16,6 +16,6 @@ public class BankAccount
 		CultureInfo culture = new CultureInfo("en-US");
 		NumberFormatInfo numberFormatInfo = culture.NumberFormat;
 		numberFormatInfo.CurrencyNegativePattern = 1;
-		return ($"{ Name}, { Balance.ToString("C2", culture) }");
+		return ($"{Name}, {Balance.ToString("C2", culture)}");
 	}
 }

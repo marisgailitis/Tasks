@@ -3,10 +3,10 @@ using System.Net.Mail;
 
 namespace Excercise6
 {
-    public class Program
-    {
-        static void Main(string[] args)
-        {
+	public class Program
+	{
+		static void Main(string[] args)
+		{
 			List<Dog> dogs = new List<Dog>();
 
 			Dog max = new Dog("Max", Dog.Gender.Male);
@@ -37,5 +37,5 @@ namespace Excercise6
 
 			Console.WriteLine(coco.HasSameMotherAs(rocky));
 		}
-    }
+	}
 }

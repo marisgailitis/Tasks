@@ -3,9 +3,9 @@ using System.Text;
 
 namespace Exercise12
 {
-    public class Student : IStudent
-    {
-        public string[] TestsTaken {get; set; }
+	public class Student : IStudent
+	{
+		public string[] TestsTaken { get; set; }
 
 		public Student()
 		{
@@ -14,13 +14,13 @@ namespace Exercise12
 
 		public string TestResults()
 		{
-			if(TestsTaken == null)
+			if (TestsTaken == null)
 			{
 				return new string("No tests taken");
 			}
 			StringBuilder builder = new StringBuilder();
-			
-			foreach(string test in TestsTaken)
+
+			foreach (string test in TestsTaken)
 			{
 				builder.Append($"{test}, ");
 			}
@@ -32,9 +32,9 @@ namespace Exercise12
 			double markPerCorrectAnswer = 100 / (double)answers.Length;
 			double receivedMark = 0;
 
-			for(int i = 0; i < answers.Length; i++)
+			for (int i = 0; i < answers.Length; i++)
 			{
-				if(answers[i].Equals(paper.MarkScheme[i]))
+				if (answers[i].Equals(paper.MarkScheme[i]))
 					receivedMark += markPerCorrectAnswer;
 			}
 			GetGrade(paper, receivedMark);
@@ -42,8 +42,8 @@ namespace Exercise12
 
 		private void GetGrade(ITestPaper paper, double receivedMark)
 		{
-			string passedString = receivedMark >= StringToNumber(paper.PassMark)? "Passed!" : "Failed!";
-			string percentString = $"{ Math.Round(receivedMark) }%";
+			string passedString = receivedMark >= StringToNumber(paper.PassMark) ? "Passed!" : "Failed!";
+			string percentString = $"{Math.Round(receivedMark)}%";
 
 			List<string> tests = TestsTaken.ToList();
 			tests.Add($"{paper.Subject}: {passedString} ({percentString})");
@@ -57,5 +57,5 @@ namespace Exercise12
 
 			return percentage;
 		}
-    }
+	}
 }

@@ -3,9 +3,9 @@ using System.Net.Mail;
 
 namespace Excercise7
 {
-    public class SavingsAccount
-    {
-        public decimal Balance { get; private set; }
+	public class SavingsAccount
+	{
+		public decimal Balance { get; private set; }
 		public decimal Interest { get; private set; }
 		public decimal TimeOpened { get; private set; }
 
@@ -23,7 +23,7 @@ namespace Excercise7
 		{
 			bool parsed = false;
 
-			while(!parsed)
+			while (!parsed)
 			{
 				decimal number;
 				parsed = decimal.TryParse(Console.ReadLine(), out number);
@@ -39,11 +39,11 @@ namespace Excercise7
 			}
 
 			return 0;
-		} 
+		}
 
 		public void ChangeBalance(decimal amount)
 		{
 			Balance += amount;
 		}
-    }
+	}
 }

@@ -3,10 +3,10 @@ using System.Text;
 
 namespace Exercise10
 {
-    public class VideoStore
-    {
+	public class VideoStore
+	{
 		private List<Video> videos = new List<Video>();
-		
+
 		public void AddVideo(string name)
 		{
 			videos.Add(new Video(name));
@@ -14,14 +14,14 @@ namespace Exercise10
 
 		public bool CheckOutVideo(string name)
 		{
-			foreach(Video video in videos)
+			foreach (Video video in videos)
 			{
-				if(video.Title == name && !video.CheckedOut)
+				if (video.Title == name && !video.CheckedOut)
 				{
 					video.GetCheckedOut();
 					Console.WriteLine($"You have checked out a {video.Title}");
 
-					if(name == "Godfather II")
+					if (name == "Godfather II")
 					{
 						ListInventory();
 					}
@@ -35,9 +35,9 @@ namespace Exercise10
 
 		public bool ReturnVideo(string name)
 		{
-			foreach(Video video in videos)
+			foreach (Video video in videos)
 			{
-				if(video.Title == name && video.CheckedOut)
+				if (video.Title == name && video.CheckedOut)
 				{
 					video.GetReturned();
 					return true;
@@ -51,14 +51,14 @@ namespace Exercise10
 		public void ListInventory()
 		{
 			StringBuilder builder = new StringBuilder();
-			builder.Append($"We have more, the amount of movies we have is { videos.Count }: ");
+			builder.Append($"We have more, the amount of movies we have is {videos.Count}: ");
 
 			Dictionary<string, int> videoCount = new Dictionary<string, int>();
 
-			foreach(Video video in videos)
+			foreach (Video video in videos)
 			{
 				string title = video.Title;
-				if(!videoCount.ContainsKey(title))
+				if (!videoCount.ContainsKey(title))
 				{
 					videoCount.Add(title, 1);
 				}
@@ -67,11 +67,11 @@ namespace Exercise10
 					videoCount[title] += 1;
 				}
 			}
-			foreach(KeyValuePair<string, int> count in videoCount)
+			foreach (KeyValuePair<string, int> count in videoCount)
 			{
 				builder.Append($"{count.Key} : {count.Value}, ");
 			}
 			Console.WriteLine(builder.ToString());
 		}
-    }
+	}
 }

@@ -3,11 +3,11 @@ using System.Net.Mail;
 
 namespace Excercise6
 {
-    public static class DogExtensions
+	public static class DogExtensions
 	{
 		public static void SetParents(this Dog dog, Dog mother, Dog father)
 		{
-			if(mother.Sex == father.Sex)
+			if (mother.Sex == father.Sex)
 			{
 				throw new ArgumentException("Wrong");
 			}

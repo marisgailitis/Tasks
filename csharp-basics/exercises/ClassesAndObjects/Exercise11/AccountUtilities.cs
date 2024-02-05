@@ -3,9 +3,9 @@ using System.Globalization;
 
 namespace Exercise11
 {
-    public static class AccountUtilities
-    {
-        public static void Transfer(Account from, Account to, decimal howMuch)
+	public static class AccountUtilities
+	{
+		public static void Transfer(Account from, Account to, decimal howMuch)
 		{
 			from.Withdraw(howMuch);
 			to.Deposit(howMuch);
@@ -17,7 +17,7 @@ namespace Exercise11
 			NumberFormatInfo numberFormatInfo = cultureInfo.NumberFormat;
 			numberFormatInfo.CurrencyNegativePattern = 1;
 
-			return ($"{ amount.ToString("C2", cultureInfo) }");
+			return ($"{amount.ToString("C2", cultureInfo)}");
 		}
-    }
+	}
 }

@@ -3,13 +3,13 @@ using System.Globalization;
 
 namespace Excercise1
 {
-    internal class Product
-    {
+	internal class Product
+	{
 		private string name;
 		private decimal priceAtStart;
 		private int amount;
 
-        public Product(string name_, decimal priceAtStart_, int amount_)
+		public Product(string name_, decimal priceAtStart_, int amount_)
 		{
 			name = name_;
 			priceAtStart = priceAtStart_;
@@ -30,5 +30,5 @@ namespace Excercise1
 		{
 			priceAtStart = newPrice;
 		}
-    }
+	}
 }
