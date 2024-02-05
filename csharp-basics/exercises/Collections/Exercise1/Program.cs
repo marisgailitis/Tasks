@@ -1,26 +1,51 @@
-﻿namespace Exercise1
+﻿﻿using System.Text;
+
+namespace Exercise1
 {
     class Program
     {
-        /**
-           * Origination:
-           * Audi -> Germany
-           * BMW -> Germany
-           * Honda -> Japan
-           * Mercedes -> Germany
-           * VolksWagen -> Germany
-           * Tesla -> USA
-           */
+		private static Dictionary<string, string> dictionary = new Dictionary<string, string>();
 
         private static void Main(string[] args)
         {
             string[] array = { "Audi", "BMW", "Honda", "Mercedes", "VolksWagen", "Mercedes", "Tesla" };
 
-            //todo - replace array with an List and print out the results
+            List<string> list = new List<string>() { "Audi", "BMW", "Honda", "Mercedes", "VolksWagen", "Mercedes", "Tesla" };
 
-            //todo - replace array with a HashSet and print out the results
+			HashSet<string> hashSet = new HashSet<string>() { "Audi", "BMW", "Honda", "Mercedes", "VolksWagen", "Mercedes", "Tesla" };
 
-            //todo - replace array with a Dictionary (use brand as key and origination as value) and print out the results
+			InitializeDictionary();
+
+            foreach(string str in list)
+			{
+				Console.Write($"List: {str}, ");
+			}
+			Console.WriteLine();
+
+			foreach(string hash in hashSet)
+			{
+				Console.Write($"HashSet: {hash}, ");
+			}
+			Console.WriteLine();
+
+			StringBuilder builder = new StringBuilder();
+			builder.Append("Dictionary: ");
+
+			foreach(KeyValuePair<string, string> d in dictionary)
+			{
+				builder.Append($"{d.Value}, ");
+			}
+			Console.Write(builder.ToString());
+        }
+
+		private static void InitializeDictionary()
+        {
+            dictionary.Add("Audi", "Germany");
+			dictionary.Add("BMW", "Germany");
+			dictionary.Add("Honda", "Japan");
+			dictionary.Add("Mercedes", "Germany");
+			dictionary.Add("VolksWagen", "Germany");
+			dictionary.Add("Tesla", "USA");
         }
     }
 }
